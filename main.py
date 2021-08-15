@@ -22,6 +22,22 @@ def LoadData():
         return None
     return data
 
+def GraphicData(data):
+    equity = data['Equity']
+    MA = data['MA']
+    
+    equity = equity.tolist()
+    MA = MA.tolist()
+    
+    plt.subplots(constrained_layout=True)
+    plt.plot(equity, label='Equity')
+    plt.plot(MA, label='MA 14')
+    plt.legend(loc='upper right')
+    plt.title("Account Performance")
+    plt.xlabel("Operation Number")
+    plt.ylabel("Equity")
+    plt.show()
+
 def isGhostMode():
     data = LoadData()
 
@@ -146,6 +162,6 @@ while True:
         AddOperation()
 
     if keyboard.is_pressed("2"):
-        break;
+        GraphicData(data);
 
     clear()
