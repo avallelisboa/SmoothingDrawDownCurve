@@ -23,20 +23,26 @@ def LoadData():
     return data
 
 def GraphicData(data):
-    equity = data['Equity']
-    MA = data['MA']
+    try:
+        equity = data['Equity']
+        MA = data['MA']
+        
+        equity = equity.tolist()
+        MA = MA.tolist()
+        
+        plt.subplots(constrained_layout=True)
+        plt.plot(equity, label='Equity')
+        plt.plot(MA, label='MA 14')
+        plt.legend(loc='upper right')
+        plt.title("Account Performance")
+        plt.xlabel("Operation Number")
+        plt.ylabel("Equity")
+        plt.show()
+    except:
+        print("No hay datos para graficar.\nPresione una tecla para continuar")
+        keyboard.read_key()
+        clear()
     
-    equity = equity.tolist()
-    MA = MA.tolist()
-    
-    plt.subplots(constrained_layout=True)
-    plt.plot(equity, label='Equity')
-    plt.plot(MA, label='MA 14')
-    plt.legend(loc='upper right')
-    plt.title("Account Performance")
-    plt.xlabel("Operation Number")
-    plt.ylabel("Equity")
-    plt.show()
 
 def isGhostMode():
     data = LoadData()
