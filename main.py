@@ -154,6 +154,7 @@ while True:
     print("2_Graficar")
 
     keyboard.read_key()
+    clear()
 
     if keyboard.is_pressed("0"):
         break;
